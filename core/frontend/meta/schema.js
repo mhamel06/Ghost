@@ -8,16 +8,18 @@ function schemaImageObject(metaDataVal) {
     if (!metaDataVal) {
         return null;
     }
-    if (!metaDataVal.dimensions) {
-        return metaDataVal.url;
-    }
 
     imageObject = {
         '@type': 'ImageObject',
-        url: metaDataVal.url,
-        width: metaDataVal.dimensions.width,
-        height: metaDataVal.dimensions.height
+        url: metaDataVal.url
     };
+
+    if (!metaDataVal.dimensions) {
+        imageObject = Object.assign(imageObject, {
+            width: metaDataVal.dimensions.width,
+            height: metaDataVal.dimensions.height
+        });
+    }
 
     return imageObject;
 }
