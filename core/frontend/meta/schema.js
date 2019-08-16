@@ -14,7 +14,7 @@ function schemaImageObject(metaDataVal) {
         url: metaDataVal.url
     };
 
-    if (!metaDataVal.dimensions) {
+    if (metaDataVal.dimensions) {
         imageObject = Object.assign(imageObject, {
             width: metaDataVal.dimensions.width,
             height: metaDataVal.dimensions.height
